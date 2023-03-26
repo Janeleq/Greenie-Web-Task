@@ -1,6 +1,8 @@
 import time
 import psutil
 
+process = psutil.Process()
+
 def display_usage(cpu_usage, mem_usage, bars=50):
     cpu_percent = cpu_usage / 100.0
     cpu_bar = '🔋' * int(cpu_percent * bars) + '-' * (bars - int(cpu_percent * bars))
@@ -13,5 +15,6 @@ def display_usage(cpu_usage, mem_usage, bars=50):
 
 
 while True: 
+    # print(process.memory_full_info) 
     display_usage(psutil.cpu_percent(), psutil.virtual_memory().percent, 50)
     time.sleep(1.0)
